@@ -1,6 +1,6 @@
 import {gql} from "@apollo/client";
 
-export interface LaunchesPastData {
+export interface LaunchesPastDataInfo {
   mission_name: string;
   launch_date_local: Date;
   launch_site: {
@@ -13,6 +13,9 @@ export interface LaunchesPastData {
   rocket: {
     rocket_name: string;
   };
+};
+export interface LaunchesPastData {
+  launchesPast: LaunchesPastDataInfo;
 };
 
 export interface LaunchesPastVars {
