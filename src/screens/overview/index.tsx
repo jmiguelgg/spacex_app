@@ -1,8 +1,6 @@
-import { useQuery } from '@apollo/client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {View, Text} from 'react-native';
-import { GET_LAUCHES } from '../../services/querys';
-import useLauchesPastService from '../../services';
+import useLauchesPastService from '../../services/launches';
 
 const Overview = () => {
   const lauches = useLauchesPastService({limit: 10});

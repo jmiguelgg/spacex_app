@@ -1,11 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { GET_LAUCHES, LaunchesPastData, LaunchesPastVars } from "./querys";
+import { GET_LAUCHES, LaunchesPastData, LaunchesPastVars } from "../querys/launches";
 
-interface ILaunchesPastServiceProps {
+interface LaunchesPastServiceProps {
   limit: number;
 };
 
-const useLauchesPastService = ({limit}: ILaunchesPastServiceProps) => {
+const useLauchesPastService = ({limit}: LaunchesPastServiceProps) => {
   const { loading, error, data } = useQuery<LaunchesPastData, LaunchesPastVars>(GET_LAUCHES, {
     variables: { limit },
   });
