@@ -7,6 +7,7 @@ import Overview from './screens/overview';
 import Details from './screens/details';
 // @ts-ignore
 import {API_URL} from 'react-native-dotenv';
+import { Provider } from './store';
 
 const client = new ApolloClient({
   uri: API_URL,
@@ -17,14 +18,16 @@ const Stack = createStackNavigator();
 const App = () => {
   return(
     <React.Fragment>
-      <ApolloProvider client={client}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Launches" component={Overview} />
-            <Stack.Screen name="Details" component={Details} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ApolloProvider>
+      <Provider>
+        <ApolloProvider client={client}>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen name="Launches" component={Overview} />
+              <Stack.Screen name="Details" component={Details} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ApolloProvider>
+      </Provider>
     </React.Fragment>
   );
 };
