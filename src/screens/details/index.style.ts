@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   imagesContainer: {
-    flexDirection: 'row',
     marginTop: 15,
   },
   images: {

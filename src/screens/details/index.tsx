@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View, Image } from 'react-native';
+import { FlatList, Text, View, Image, ScrollView } from 'react-native';
 import styles from './index.style';
 
 interface DetaildProps {
