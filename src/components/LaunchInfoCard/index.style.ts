@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingRight: 15,
     marginVertical: 7,
-    marginHorizontal: 10,
     flexDirection: 'row',
     overflow: 'hidden',
     alignItems: 'center',

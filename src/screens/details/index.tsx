@@ -1,10 +1,29 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View, Image } from 'react-native';
+import styles from './index.style';
 
-const Details = () => {
+interface DetaildProps {
+  navigation: any;
+  route: any;
+}
+
+const Details = ({navigation, route}: DetaildProps) => {
+  const {infoLaunch} = route.params;
   return (
-    <View>
-      <Text>Hi this other screen</Text>
+    <View style={styles.containerScreen}>
+      <Text style={styles.title}>{infoLaunch.mission_name}</Text>
+      <Text style={styles.textInfo}>{infoLaunch.rocket.rocket_name}</Text>
+      <Text style={styles.textInfo}>{infoLaunch.launch_site.site_name_long}</Text>
+      <Text style={styles.textInfo}>{infoLaunch.launch_date_local}</Text>
+      <FlatList
+        data={infoLaunch.links.flickr_images}
+        keyExtractor={item => 'image'+item}
+        style={styles.imagesContainer}
+        key={3}
+        numColumns={3}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item}) => <Image style={styles.images} source={{uri: item}} />}
+      />
     </View>
   );
 };

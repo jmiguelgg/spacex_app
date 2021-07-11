@@ -32,13 +32,17 @@ const Overview = ({navigation}: OverviewProps) => {
     );
   };
 
+  const handdleNavigatToDetails = (launchesInfo: LaunchesPastDataInfo) => {
+    navigation.navigate('Details', {infoLaunch: launchesInfo});
+  };
+
   const renderLaunches = (launchesInfo: LaunchesPastDataInfo[]) => {
     return (
       <FlatList
         data={launchesInfo}
-        style={styles.listContainer}
         keyExtractor={item => 'card'+item.mission_name}
-        renderItem={({item}) => <LaunchInfoCard cardInfo={item} />}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item}) => <LaunchInfoCard cardInfo={item} goToDetails={handdleNavigatToDetails} />}
       />
     );
   };

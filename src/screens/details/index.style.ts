@@ -9,15 +9,28 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: "center"
+  imagesContainer: {
+    flexDirection: 'row',
+    marginTop: 15,
   },
-  textLoading: {
-    ...Font.large,
-    color: Color.back,
+  images: {
+    resizeMode: 'cover',
+    height: 118,
+    width: 118,
+    marginVertical: 1,
+    marginHorizontal: 1,
+    alignItems: 'flex-start',
     alignSelf: 'center',
-    marginTop: 20,
+  },
+  title: {
+    ...Font.large,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginVertical: 5,
+  },
+  textInfo: {
+    ...Font.meddium,
+    lineHeight: 20,
   },
 });
 
