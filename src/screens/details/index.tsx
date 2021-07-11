@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, Text, View, Image, ScrollView } from 'react-native';
+import FavoritImage from '../../components/FavoritImage';
 import styles from './index.style';
 
 interface DetaildProps {
@@ -22,7 +23,7 @@ const Details = ({navigation, route}: DetaildProps) => {
         key={3}
         numColumns={3}
         showsVerticalScrollIndicator={false}
-        renderItem={({item}) => <Image style={styles.images} source={{uri: item}} />}
+        renderItem={({item}) => <FavoritImage uri={item} />}
       />
     </View>
   );
