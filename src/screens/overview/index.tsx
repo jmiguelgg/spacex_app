@@ -1,9 +1,9 @@
 import { ApolloError } from '@apollo/client';
 import React from 'react';
-import {View, Text, Button, ActivityIndicator, FlatList} from 'react-native';
+import {View, Text, ActivityIndicator, FlatList} from 'react-native';
 import LaunchInfoCard from '../../components/LaunchInfoCard';
 import useLauchesPastService from '../../services/launches';
-import { LaunchesPastData, LaunchesPastDataInfo } from '../../services/querys/launches';
+import { LaunchesPastDataInfo } from '../../services/querys/launches';
 import Color from '../../theme/color';
 import styles from './index.style';
 
@@ -13,7 +13,7 @@ interface OverviewProps {
 
 const Overview = ({navigation}: OverviewProps) => {
   const LIMIT_REQUEST = 10;
-  const launches = useLauchesPastService({limit: LIMIT_REQUEST});
+  const result = useLauchesPastService({limit: LIMIT_REQUEST});
 
   const renderLoading = () => {
     return (
@@ -37,9 +37,11 @@ const Overview = ({navigation}: OverviewProps) => {
   };
 
   const renderLaunches = (launchesInfo: LaunchesPastDataInfo[]) => {
+    const orderLaunches = [...result] as LaunchesPastDataInfo[];
+    const newOrderLaunches = orderLaunches.sort((a,b) => new Date(a.launch_date_local).getTime() - new Date(b.launch_date_local).getTime());
     return (
       <FlatList
-        data={launchesInfo}
+        data={newOrderLaunches}
         keyExtractor={item => 'card'+item.mission_name}
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => <LaunchInfoCard cardInfo={item} goToDetails={handdleNavigatToDetails} />}
@@ -49,7 +51,7 @@ const Overview = ({navigation}: OverviewProps) => {
 
   return (
     <View style={styles.containerScreen}>
-      {launches ? renderLaunches(launches) : renderLoading()}
+      {result ? renderLaunches(result) : renderLoading()}
     </View>
   );
 };

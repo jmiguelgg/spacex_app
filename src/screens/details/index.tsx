@@ -13,8 +13,8 @@ const Details = ({navigation, route}: DetaildProps) => {
     <View style={styles.containerScreen}>
       <Text style={styles.title}>{infoLaunch.mission_name}</Text>
       <Text style={styles.textInfo}>{infoLaunch.rocket.rocket_name}</Text>
+      <Text style={styles.textInfo}>{infoLaunch.launch_date_local.toString().split('T')[0]}</Text>
       <Text style={styles.textInfo}>{infoLaunch.launch_site.site_name_long}</Text>
-      <Text style={styles.textInfo}>{infoLaunch.launch_date_local}</Text>
       <FlatList
         data={infoLaunch.links.flickr_images}
         keyExtractor={item => 'image'+item}

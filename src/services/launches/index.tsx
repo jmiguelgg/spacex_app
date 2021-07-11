@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GET_LAUCHES, LaunchesPastData, LaunchesPastVars } from "../querys/launches";
+import { GET_LAUCHES, LaunchesPastData, LaunchesPastDataInfo, LaunchesPastVars } from "../querys/launches";
 
 interface LaunchesPastServiceProps {
   limit: number;
@@ -16,11 +16,8 @@ const useLauchesPastService = ({limit}: LaunchesPastServiceProps) => {
   });
 
   if (loading) return null;
-  if (error) {
-    console.error(error);
-    return null;
-  }
-  return data?.launchesPast;
+  if (error) return error;
+  return [...data?.launchesPast] as LaunchesPastDataInfo[];
 };
 
 export default useLauchesPastService;

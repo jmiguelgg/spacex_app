@@ -20,7 +20,9 @@ const LaunchInfoCard = ({cardInfo, goToDetails}: LaunchInfoCardProps)  => {
       <Image style={existImage ? styles.imagePreview : styles.missinImage} source={existImage ? {uri: cardInfo.links.flickr_images[0]} : require('../../assets/imageIcon.png')} />
       <View style={{flex: 1}}>
         <Text style={styles.textCardTitle}>{cardInfo.mission_name}</Text>
-        <Text style={styles.textCardDate}>{cardInfo.launch_date_local}</Text>
+        <Text style={styles.textCardDate}>
+          {cardInfo.launch_date_local.toString().split('T')[0]}
+        </Text>
       </View>
       <Image style={styles.arrowIcon} source={require('../../assets/rightArrow.png')} />
     </TouchableOpacity>
